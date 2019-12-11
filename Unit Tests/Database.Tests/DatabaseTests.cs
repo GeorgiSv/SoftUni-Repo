@@ -1,16 +1,16 @@
-using NUnit.Framework;
-using System;
-using Database;
-using System.Collections;
-
-namespace Tests
+namespace Database.Tests
 {
+    using NUnit.Framework;
+    using System;
+    using System.Collections;
+
     [TestFixture]
     public class DatabaseTests
     {
         [SetUp]
         public void Setup()
         {
+
         }
 
         [Test]
@@ -18,14 +18,14 @@ namespace Tests
         {
             //Arange
             var arrayOfIntegers = new int[16];
-            var database = new Database.Database(arrayOfIntegers);
+            var database = new Database(arrayOfIntegers);
 
             //Action
-            var count = database.Count;
+            var actualCount = database.Count;
             var expectedCount = 16;
 
             //Assert
-            Assert.AreEqual(expectedCount, count);
+            Assert.AreEqual(expectedCount, actualCount);
         }
         [Test]
         public void ConstructroShouldThrowInvalidOperationExceptionWhenElementsAreBiggerThanSixteen()
@@ -35,13 +35,13 @@ namespace Tests
             //Action
             //Assert
             Assert.Throws<InvalidOperationException>
-                (() => new Database.Database(arrayOfIntegers));
+                (() => new Database(arrayOfIntegers));
         }
         [Test]
         public void AddOperationShouldThrowInvalidOperationExceptionWhenArrayIsFull()
         {
             var arrayOfIntegers = new int[16];
-            var database = new Database.Database(arrayOfIntegers);
+            var database = new Database(arrayOfIntegers);
             int elementForAdd = 10;
 
             Assert.Throws<InvalidOperationException>
@@ -51,7 +51,7 @@ namespace Tests
         public void AddOperationShouldAddElementAtTheNextFreeCell()
         {
             int[] arrayOfIntegers = {1, 2, 3, 4};
-            var database = new Database.Database(arrayOfIntegers);
+            var database = new Database(arrayOfIntegers);
 
             int expectedNumber = 10;
             database.Add(expectedNumber);
@@ -61,10 +61,23 @@ namespace Tests
             Assert.AreEqual(expectedNumber, actualNumber);
         }
         [Test]
+        public void AddOperationShouldAddIncreaseCountOFCollection()
+        {
+            int[] arrayOfIntegers = { 1, 2, 3, 4 };
+            var database = new Database(arrayOfIntegers);
+
+            int expectedCount = 5;
+            database.Add(6);
+
+            var actualCount = database.Fetch().Length;
+
+            Assert.AreEqual(expectedCount, actualCount);
+        }
+        [Test]
         public void RemoveShouldRemoveOnlyLastElement()
         {
             int[] arrayOfIntegers = { 1, 2, 3, 4 };
-            var database = new Database.Database(arrayOfIntegers);
+            var database = new Database(arrayOfIntegers);
 
             int expectedNumber = 3;
             database.Remove();
@@ -72,11 +85,26 @@ namespace Tests
             var actualNumber = database.Fetch()[2];
 
             Assert.AreEqual(expectedNumber, actualNumber);
+
+        }
+
+        [Test]
+        public void RemoveShouldDecreaseTreCount()
+        {
+            int[] arrayOfIntegers = { 1, 2, 3, 4 };
+            var database = new Database(arrayOfIntegers);
+
+            int expectedNumber = 3;
+            database.Remove();
+
+            var actualNumber = database.Fetch().Length;
+
+            Assert.AreEqual(expectedNumber, actualNumber);
         }
         public void RemoveShouldTHrowInvalidOperationExceptionWhenArrayIsEmpty()
         {
             int[] arrayOfIntegers = new int[0];
-            var database = new Database.Database(arrayOfIntegers);
+            var database = new Database(arrayOfIntegers);
 
             Assert.Throws<InvalidOperationException>
                 (() => database.Remove());
@@ -85,7 +113,7 @@ namespace Tests
         public void FetchShouldReturnELementsAsArray()
         {
             int[] arrayOfIntegers = { 1, 2, 3, 4 };
-            var database = new Database.Database(arrayOfIntegers);
+            var database = new Database(arrayOfIntegers);
 
             int[] expected = { 1, 2, 3, 4 };
             int[] actual = database.Fetch();
