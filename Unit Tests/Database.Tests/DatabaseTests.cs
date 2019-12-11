@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using Database;
+using System.Collections;
 
 namespace Tests
 {
@@ -31,7 +32,6 @@ namespace Tests
         {
             //Arange
             var arrayOfIntegers = new int[17];
-
             //Action
             //Assert
             Assert.Throws<InvalidOperationException>
@@ -47,23 +47,50 @@ namespace Tests
             Assert.Throws<InvalidOperationException>
                 (() => database.Add(elementForAdd));
         }
+        [Test]
         public void AddOperationShouldAddElementAtTheNextFreeCell()
         {
-            var arrayOfIntegers = new int[16];
+            int[] arrayOfIntegers = {1, 2, 3, 4};
             var database = new Database.Database(arrayOfIntegers);
 
-            int countBefire = database.Count;
+            int expectedNumber = 10;
+            database.Add(expectedNumber);
 
-            database.Add(10);
+            var actualNumber = database.Fetch()[4];
 
-            int countAfter = database.Count;
+            Assert.AreEqual(expectedNumber, actualNumber);
+        }
+        [Test]
+        public void RemoveShouldRemoveOnlyLastElement()
+        {
+            int[] arrayOfIntegers = { 1, 2, 3, 4 };
+            var database = new Database.Database(arrayOfIntegers);
 
+            int expectedNumber = 3;
+            database.Remove();
 
-            Assert.That(countBefire < countAfter);
+            var actualNumber = database.Fetch()[2];
+
+            Assert.AreEqual(expectedNumber, actualNumber);
+        }
+        public void RemoveShouldTHrowInvalidOperationExceptionWhenArrayIsEmpty()
+        {
+            int[] arrayOfIntegers = new int[0];
+            var database = new Database.Database(arrayOfIntegers);
+
+            Assert.Throws<InvalidOperationException>
+                (() => database.Remove());
+        }
+        [Test]
+        public void FetchShouldReturnELementsAsArray()
+        {
+            int[] arrayOfIntegers = { 1, 2, 3, 4 };
+            var database = new Database.Database(arrayOfIntegers);
+
+            int[] expected = { 1, 2, 3, 4 };
+            int[] actual = database.Fetch();
+
+            Assert.AreEqual(expected, actual);
         }
     }
 }
-//•	Remove operation, should support only removing an element at the last index(just like a stack)
-//          o If you try to remove element from empty Database, InvalidOperationException is thrown.
-//•	Constructors should take integers only, and store them in array.
-//•	Fetch method should return the elements as array.
