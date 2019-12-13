@@ -67,7 +67,6 @@ namespace MXGP.Models.Races
             {
                 throw new ArgumentNullException($"Rider {rider.Name} is already added in {this.Name} race.");
             }
-
             this.riders.Add(rider);
         }
     }

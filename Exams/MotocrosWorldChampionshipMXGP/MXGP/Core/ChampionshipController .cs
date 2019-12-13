@@ -5,7 +5,6 @@ using MXGP.Models.Riders;
 using MXGP.Models.Riders.Contracts;
 using MXGP.Repositories;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -26,18 +25,18 @@ namespace MXGP.Core
 
         public string AddMotorcycleToRider(string riderName, string motorcycleModel)
         {
-            var rider = this.riderRepository.Models.First(r => r.Name == riderName);
+            var rider = this.riderRepository.GetByName(riderName);
 
             if (rider == null)
             {
                 throw new InvalidOperationException($"Rider {riderName} could not be found.");
             }
 
-            var motorCycle = this.motorcycleRepository.Models.First(m => m.Model == riderName);
+            var motorCycle = this.motorcycleRepository.GetByName(motorcycleModel);
 
             if (motorCycle == null)
             {
-                throw new InvalidOperationException($"Rider {motorcycleModel} could not be found.");
+                throw new InvalidOperationException($"Motorcycle {motorcycleModel} could not be found.");
             }
 
             this.riderRepository.Models.First(r => r.Name == riderName).AddMotorcycle(motorCycle);
@@ -46,14 +45,14 @@ namespace MXGP.Core
 
         public string AddRiderToRace(string raceName, string riderName)
         {
-            var race = this.raceRepository.Models.First(r => r.Name == raceName);
+            var race = this.raceRepository.GetByName(raceName);
 
             if (race == null)
             {
-                throw new InvalidOperationException($"Rider {raceName} could not be found.");
+                throw new InvalidOperationException($"Race {raceName} could not be found.");
             }
 
-            var rider = this.riderRepository.Models.First(r => r.Name == riderName);
+            var rider = this.riderRepository.GetByName(riderName);
 
             if (rider == null)
             {
@@ -66,7 +65,7 @@ namespace MXGP.Core
 
         public string CreateMotorcycle(string type, string model, int horsePower)
         {
-            var motorCycle = this.motorcycleRepository.Models.First(m => m.Model == model);
+            var motorCycle = this.motorcycleRepository.GetByName(model);
 
             if (motorCycle != null)
             {
@@ -83,7 +82,7 @@ namespace MXGP.Core
             }
 
             this.motorcycleRepository.Add(motorCycle);
-            return $"{type} {model} is created.";
+            return $"{motorCycle.GetType().Name} {model} is created.";
         }
 
         public string CreateRace(string name, int laps)
@@ -114,30 +113,27 @@ namespace MXGP.Core
 
         public string StartRace(string raceName)
         {
+            var race = this.raceRepository.Models.FirstOrDefault(r => r.Name == raceName);
+
             if (!this.raceRepository.Models.Any(r => r.Name == raceName))
             {
                 throw new InvalidOperationException($"Race {raceName} could not be found.");
             }
-            if (this.raceRepository.Models.Count < 3)
+            if (race.Riders.Count < 3)
             {
                 throw new InvalidOperationException($"Race {raceName} cannot start with less than 3 participants.");
             }
 
-            var race = this.raceRepository.Models.First(r => r.Name == raceName);
-            var fasterRiders = new Queue<IRider>();
+            IRider[] fasterRiders = race.Riders.OrderByDescending(x => x.Motorcycle.CalculateRacePoints(race.Laps)).Take(3).ToArray();
 
-            foreach (var rider in riderRepository.Models.OrderByDescending(x => x.Motorcycle.CalculateRacePoints(race.Laps)).Take(3))
-            {
-                fasterRiders.Enqueue(rider);
-            }
 
             this.raceRepository.Remove(race);
 
             var sb = new StringBuilder();
 
-            sb.AppendLine($"Rider {fasterRiders.Dequeue().Name} wins {raceName} race.");
-            sb.AppendLine($"Rider {fasterRiders.Dequeue().Name} is second in {raceName} race.");
-            sb.AppendLine($"Rider {fasterRiders.Dequeue().Name} is third in {raceName} race.");
+            sb.AppendLine($"Rider {fasterRiders[0].Name} wins {raceName} race.");
+            sb.AppendLine($"Rider {fasterRiders[1].Name} is second in {raceName} race.");
+            sb.AppendLine($"Rider {fasterRiders[2].Name} is third in {raceName} race.");
 
             return sb.ToString().TrimEnd();
         }

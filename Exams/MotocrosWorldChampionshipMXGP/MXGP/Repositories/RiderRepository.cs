@@ -33,7 +33,7 @@ namespace MXGP.Repositories
 
         public IRider GetByName(string name)
         {
-            return this.models.First(r => r.Name == name);
+            return this.models.FirstOrDefault(r => r.Name == name);
         }
 
         public bool Remove(IRider model)

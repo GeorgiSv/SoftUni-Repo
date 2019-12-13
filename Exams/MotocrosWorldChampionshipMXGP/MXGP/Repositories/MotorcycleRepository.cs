@@ -35,7 +35,7 @@ namespace MXGP.Repositories
 
         public IMotorcycle GetByName(string name)
         {
-            return this.models.First(r => r.Model == name);
+            return this.models.FirstOrDefault(r => r.Model == name);
         }
 
         public bool Remove(IMotorcycle model)

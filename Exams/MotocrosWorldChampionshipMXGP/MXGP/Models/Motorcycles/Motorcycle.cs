@@ -8,7 +8,6 @@ namespace MXGP.Models.Motorcycles
     public abstract class Motorcycle : IMotorcycle
     {
         private string model;
-        private int horsePower;
 
         public Motorcycle(string model, int horsePower, double cubicCentimeters)
         {
@@ -39,7 +38,7 @@ namespace MXGP.Models.Motorcycles
 
         public double CalculateRacePoints(int laps)
         {
-            return this.CubicCentimeters / this.horsePower * laps;
+            return this.CubicCentimeters / this.HorsePower * laps;
         }
     }
 }
