@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ChooseRandomCharacter chr = new ChooseRandomCharacter(); 
+}
+
+    <div class="text-center">
+        <h1 class="display-4">Welcome motherf*ckers'</h1>
+
+        <div>
+            <h3 class="name-left ">TrendyD420</h3>
+            <h3 class="name-center">MC Starshy</h3>
+            <h3 class="name-right">Gutman</h3>
+        </div>
+
+        <div class="output">
+           <label></label>       
+        </div>
+
+        <div>
+             <button class="choose-buttons" type="button" onclick="@chr.Choose("Game Heroes")">Choose /\
+             </button>" 
+        </div>
+
+    </div>
