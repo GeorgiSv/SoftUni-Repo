@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    ChooseRandomCharacter randomCharacter = new ChooseRandomCharacter();
+}
+
+    <div class="text-center">
+        <h1 class="display-4">Welcome motherf*ckers'</h1>
+
+        <div class="container-fluid">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Trendy Di 4'20</th>
+                        <th scope="col">MC Starshy</th>
+                        <th scope="col">Guttman</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <button class="btn btn-outline-secondary" type="button" onclick="@randomCharacter.Choose("Movie Characters")>
+                                Choose /\
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-secondary" type="button" onclick="@randomCharacter.Choose("Movie Characters")>
+                                Choose /\
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-secondary" type="button" onclick="randomCharacter.Choose(" Movie Characters")>
+                                Choose /\
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @if (randomCharacter.Output != null)
+                            {
+                                <p>@randomCharacter.Output</p>
+                            }
+                            else
+                            {
+                                <p>result should be here</p>
+                            }
+                        </td>
+                        <td>
+                            @if (randomCharacter.Output != null)
+                            {
+                                <p>@randomCharacter.Output</p>
+                            }
+                            else
+                            {
+                                <p>result should be here</p>
+                            }
+                        </td>
+                        <td>
+                            @if (randomCharacter.Output != null)
+                            {
+                                <p>@randomCharacter.Output</p>
+                            }
+                            else
+                            {
+                                <p>result should be here</p>
+                            }
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container-fluid">
+            @if (randomCharacter.Output != null)
+            {
+                <label>@randomCharacter.Output</label>
+            }
+        </div>
+    </div>

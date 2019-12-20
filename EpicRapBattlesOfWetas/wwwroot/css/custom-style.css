@@ -1,0 +1,21 @@
+﻿
+.name-left {
+    display: inline-block;
+    margin: 60px 150px 0 10px;
+}
+
+.name-center {
+    display: inline-block;
+    margin: 60px 150px 0 150px;
+}
+
+.name-right {
+    display: inline-block;
+    margin: 60px 10px 0 150px;
+}
+
+.button {
+    margin-bottom: 1px;
+    margin-top: 30px;
+    margin-right: 160px;
+}
