@@ -4,8 +4,12 @@
 // Write your JavaScript code.
 
 
-var type = document.getElementById("slect-character");
-var selecteType = type.options[type.selectedIndex].value;
+function GetSelectedTpeValue() {
+
+    var type = document.getElementById("slect-character");
+    var selecteType = type.options[type.selectedIndex].value;
+    return selecteType;
+}
 
 
 //MC Starshey
@@ -35,43 +39,33 @@ var MCStarshyGameNames = [
     'Goro',
     'Broke',
     'Trevor',
-    'Hog RIder'
+    'Hog RIder',
 ]
 
 
-game-heroes">Gam
+function newCharacterStarshey() {
 
-famous-people">F
-movie-characters
-
-if (selecteType == "famous-people") {
-
-    function newCharacterStarshey() {
+    if (GetSelectedTpeValue() == "famous-people") {
 
         var randomNumber = Math.floor(Math.random() * MCStarshyFamousNames.length);
         document.getElementById('characterDisplayStarshey').innerHTML = MCStarshyFamousNames[randomNumber];
     }
-}
-else if (selecteType.toString() == "game-heroes") {
-
-    function newCharacterStarshey() {
+    else if (GetSelectedTpeValue() == "game-heroes") {
 
         var randomNumber = Math.floor(Math.random() * MCStarshyGameNames.length);
         document.getElementById('characterDisplayStarshey').innerHTML = MCStarshyGameNames[randomNumber];
     }
-}
-else if (selecteType.toString() == "movie-characters") {
-
-    function newCharacterStarshey() {
+    else if (GetSelectedTpeValue() == "movie-characters") {
 
         var randomNumber = Math.floor(Math.random() * MCStarshyMovieNames.length);
         document.getElementById('characterDisplayStarshey').innerHTML = MCStarshyMovieNames[randomNumber];
     }
 }
 
+
 //Trendy Di 420
 
-var TrendyNames = [
+var TrendyMovieNames = [
 
     'Aragorn ',
     'Sauron',
@@ -83,14 +77,57 @@ var TrendyNames = [
     'The accountant',
     'Jason Bourne',
     'Dean Winchester',
+]
 
+var TrendyFamousNames = [
+
+    "Tom Hardy",
+    "Christian Bale",
+    "Lenin",
+    "Bruce Willis",
+    "James Franco",
+    "Slavi Trifonov",
+    "Barrack Obama",
+    "Ts.Tsvetanov",
+    "Hr.Stoichkov",
+    "Hr.Botev",
+]
+
+
+
+var TrendyGameNames = [
+
+    "Talion/Celebrimbor",
+    "Scorpion",
+    "Batman",
+    "Quan Chi",
+    "Noob Saibot",
+    "Tremor",
+    "Shinnok",
+    "Ben Ten",
+    "Kung Jin",
+    "Ermac"
 ]
 
 function newCharacterTrendy() {
 
-    var randomNumber = Math.floor(Math.random() * TrendyNames.length);
-    document.getElementById('characterDisplayTrendy').innerHTML = TrendyNames[randomNumber];
+    if (GetSelectedTpeValue() == "famous-people") {
+
+        var randomNumber = Math.floor(Math.random() * TrendyFamousNames.length);
+        document.getElementById('characterDisplayTrendy').innerHTML = TrendyFamousNames[randomNumber];
+    }
+    else if (GetSelectedTpeValue() == "game-heroes") {
+
+        var randomNumber = Math.floor(Math.random() * TrendyGameNames.length);
+        document.getElementById('characterDisplayTrendy').innerHTML = TrendyGameNames[randomNumber];
+    }
+    else if (GetSelectedTpeValue() == "movie-characters") {
+
+        var randomNumber = Math.floor(Math.random() * TrendyMovieNames.length);
+        document.getElementById('characterDisplayTrendy').innerHTML = TrendyMovieNames[randomNumber];
+    }
 }
+
 
 //Guttman
 
