@@ -55,10 +55,17 @@ hr {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
-    font-size:large;
-    text-align: center;
-    text-decoration-color: white;
+}
+.parallax-two {
+    /* The image used */
+    background-image: url("../imgs/mic-three - reversed.jpg");
+    /* Set a specific height */
+    height: 300px;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .rulers-block {
     margin-top: 10px;
@@ -66,9 +73,16 @@ hr {
     height: 500px;
     background: rgb(2,0,36);
     background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 0%, rgba(40,92,87,1) 0%, rgba(255,255,255,0) 0%, rgba(244,248,243,0.2119384079836728) 35%, rgba(61,133,34,0.9029496439387289) 49%, rgba(34,109,6,1) 64%, rgba(123,57,2,1) 79%, rgba(231,10,0,1) 100%, rgba(255,0,0,0.7596912169724368) 100%);
+    font-family: 'Mansalva', cursive;
 }
 .rulers-block p{
     font-size:xx-large;
+}
+.ruler-button {
+    border-radius: 7px;
+    border: 2px;
+    background-color: none;
+    position: center;
 }
 
 /*Ovveride...*/
@@ -81,4 +95,7 @@ hr {
 }
 .box-shadow {
     box-shadow: 0px -6px 45px -5px rgba(0,0,0,0.61);
+}
+.col-sm button:hover {
+    box-shadow: -2px -3px 71px 15px rgba(0,0,0,0.24);
 }
