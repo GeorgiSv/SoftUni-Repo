@@ -131,16 +131,50 @@ function newCharacterTrendy() {
 
 //Guttman
 
-var GuttmanNames = [
+var GuttmanMovieNames = [
+
     'Iron Man',
     'Gandalf',
     'Optimus Prime',
     'Green Lanthern',
     'Thorin',
 ]
+var GuttmanFamousNames = [
+
+    "David Has",
+    "Benedict ",
+    "Richard  ",
+    "Leonardo ",
+    "Johnny D.",
+]
+
+var GuttmanGameNames = [
+
+    "Kratos",
+    "Geralt",
+    "Dovahkiin",
+    "Sole survivor",
+    "DoomGuy",
+
+]
 
 function newCharacterGuttman() {
 
-    var randomNumber = Math.floor(Math.random() * GuttmanNames.length);
-    document.getElementById('characterDisplayGuttman').innerHTML = GuttmanNames[randomNumber];
+    if (GetSelectedTpeValue() == "famous-people") {
+
+        var randomNumber = Math.floor(Math.random() * GuttmanFamousNames.length);
+        document.getElementById('characterDisplayGuttman').innerHTML = GuttmanFamousNames[randomNumber];
+    }
+    else if (GetSelectedTpeValue() == "game-heroes") {
+
+        var randomNumber = Math.floor(Math.random() * GuttmanGameNames.length);
+        document.getElementById('characterDisplayGuttman').innerHTML = GuttmanGameNames[randomNumber];
+    }
+    else if (GetSelectedTpeValue() == "movie-characters") {
+
+        var randomNumber = Math.floor(Math.random() * GuttmanMovieNames.length);
+        document.getElementById('characterDisplayGuttman').innerHTML = GuttmanMovieNames[randomNumber];
+    }
 }
+
+
