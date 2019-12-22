@@ -106,7 +106,7 @@ var TrendyGameNames = [
     "Shinnok",
     "Ben Ten",
     "Kung Jin",
-    "Ermac"
+    "Ermac",
 ]
 
 function newCharacterTrendy() {

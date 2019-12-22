@@ -6,17 +6,11 @@
 <div class="text-center">
     <div class="container-fluid">
         <h1 class="display-4">Welcome motherf*ckers'</h1>
-
         <div class="dorpdownMenu">
             <select id="slect-character" class="custom-select">
+                <option value="selec">Choose Type</option>
 
-                <option value="selec">
-                    Choose Type
-                </option>
-
-                <option value="game-heroes">
-                    Game Heroes
-                </option>
+                <option value="game-heroes">Game Heroes </option>
 
                 <option value="famous-people">Famous People</option>
 
@@ -25,48 +19,67 @@
         </div>
     </div>
 
-    <div id="empty-blocks" class="container-fluid">
-        <table class="table table-striped" style="border:none;">
-            <thead>
-                <tr>
-                    <th scope="col">Trendy Di 4'20</th>
-                    <th scope="col">MC Starshy</th>
-                    <th scope="col">Guttman</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <button class="btn btn-outline-secondary" type="button" onclick="newCharacterTrendy()" text-decoration-color: red;>
-                            Choose /\
-                        </button>
-                    </td>
-                    <td>
-                        <button class="btn btn-outline-secondary" type="button" onclick="newCharacterStarshey()" )>
-                            Choose /\
-                        </button>
-                    </td>
-                    <td>
-                        <button class="btn btn-outline-secondary" type="button" onclick="newCharacterGuttman()">
-                            Choose /\
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td id="characterDisplayTrendy">
-                    </td>
-                    <td id="characterDisplayStarshey">
-                    </td>
-                    <td id="characterDisplayGuttman">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+
+    <div class="empty-line" style="display:block"></div>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm" id="rapper-name">
+                <p class="font-weight-bold">Trendy Di 4'20</p>
+            </div>
+
+            <div class="col-sm" id="rapper-name">
+                <p class="font-weight-bold">MC Starshy</p>
+                
+            </div>
+
+            <div class="col-sm" id="rapper-name">
+                <p class="font-weight-bold">Guttman</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm">
+                <button class="btn btn-outline-secondary" type="button" onclick="newCharacterTrendy()" text-decoration-color: red;>
+                    Choose /\
+                </button>
+            </div>
+
+            <div class="col-sm">
+                <button class="btn btn-outline-secondary" type="button" onclick="newCharacterStarshey()" )>
+                    Choose /\
+                </button>
+            </div>
+
+            <div class="col-sm">
+                <button class="btn btn-outline-secondary" type="button" onclick="newCharacterGuttman()">
+                    Choose /\
+                </button>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm" id="characterDisplayTrendy">
+                Trendy result:
+            </div>
+
+            <div class="col-sm" id="characterDisplayStarshey">
+                Starshey result:
+            </div>
+
+            <div class="col-sm" id="characterDisplayGuttman">
+                Guttman result:
+            </div>
+        </div>
     </div>
+
 
     <div class="container-fluid">
         <div class="empty-blocks">Is it good ??</div>
     </div>
+
 
     <script src="~/js/site.js"></script>
 </div>
