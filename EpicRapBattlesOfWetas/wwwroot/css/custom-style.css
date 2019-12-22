@@ -30,15 +30,22 @@ body {
     padding-bottom: 70px;
 }
 
+.output{
+    font-size: xx-large;
+    margin-top: 40px;
+    text-decoration-color: red;
+    font-style:italic;
+    border: 1px;
+}
+
 /*Ovveride...*/
-.font-weight-bold{
+.font-weight-bold {
     font-size: x-large;
 }
 .col-sm {
-    margin-top: 5px;
-    margin-bottom: 15px;
+    margin-top: 1px;
+    margin-bottom: 5px;
 }
-
 .box-shadow {
     box-shadow: 0px -6px 45px -5px rgba(0,0,0,0.61);
 }
