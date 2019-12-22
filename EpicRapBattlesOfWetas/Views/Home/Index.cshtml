@@ -1,10 +1,16 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
-    ChooseRandomCharacter randomCharacter = new ChooseRandomCharacter();
 }
 
     <div class="text-center">
         <h1 class="display-4">Welcome motherf*ckers'</h1>
+
+        <select id="slect-character">
+            <option class="character-type" value="game-heroes">Game Heroes
+            </option>
+            <option class="character-type" value="famous-people">Famous People</option>
+            <option class="character-type" value="movie-characters">Movie Characters</option>
+        </select>
 
         <div class="container-fluid">
             <table class="table table-striped">
@@ -18,61 +24,33 @@
                 <tbody>
                     <tr>
                         <td>
-                            <button class="btn btn-outline-secondary" type="button" onclick="@randomCharacter.Choose("Movie Characters")>
+                            <button class="btn btn-outline-secondary" type="button" onclick="newCharacterTrendy()">
                                 Choose /\
                             </button>
                         </td>
                         <td>
-                            <button class="btn btn-outline-secondary" type="button" onclick="@randomCharacter.Choose("Movie Characters")>
+                            <button class="btn btn-outline-secondary" type="button" onclick="newCharacterStarshey()" )>
                                 Choose /\
                             </button>
                         </td>
                         <td>
-                            <button class="btn btn-outline-secondary" type="button" onclick="randomCharacter.Choose(" Movie Characters")>
+                            <button class="btn btn-outline-secondary" type="button" onclick="newCharacterGuttman()">
                                 Choose /\
                             </button>
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            @if (randomCharacter.Output != null)
-                            {
-                                <p>@randomCharacter.Output</p>
-                            }
-                            else
-                            {
-                                <p>result should be here</p>
-                            }
+                        <td id="characterDisplayTrendy">
                         </td>
-                        <td>
-                            @if (randomCharacter.Output != null)
-                            {
-                                <p>@randomCharacter.Output</p>
-                            }
-                            else
-                            {
-                                <p>result should be here</p>
-                            }
+                        <td id="characterDisplayStarshey">
                         </td>
-                        <td>
-                            @if (randomCharacter.Output != null)
-                            {
-                                <p>@randomCharacter.Output</p>
-                            }
-                            else
-                            {
-                                <p>result should be here</p>
-                            }
+                        <td id="characterDisplayGuttman">
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="container-fluid">
-            @if (randomCharacter.Output != null)
-            {
-                <label>@randomCharacter.Output</label>
-            }
-        </div>
+
+        <script src="~/js/site.js"></script>
     </div>
