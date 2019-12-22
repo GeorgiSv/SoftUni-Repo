@@ -33,9 +33,35 @@ body {
 .output{
     font-size: xx-large;
     margin-top: 40px;
+    margin-bottom: 40px;
     text-decoration-color: red;
     font-style:italic;
     border: 1px;
+}
+hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+.parallax {
+    /* The image used */
+    background-image: url("../imgs/mic-three.jpg");
+    /* Set a specific height */
+    height: 300px;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    font-size:large;
+    text-align: center;
+    text-decoration-color: white;
+}
+.rulers-block{
+    padding: 100px;
 }
 
 /*Ovveride...*/
