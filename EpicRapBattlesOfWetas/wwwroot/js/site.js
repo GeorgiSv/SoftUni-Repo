@@ -11,6 +11,18 @@ function GetSelectedTpeValue() {
     return selecteType;
 }
 
+//Musix function is here..
+function play() {
+    var audio = document.getElementById("audio");
+    audio.play();
+}
+
+//Sleep function - slow donw result..
+var milliseconds = 5900;
+
+const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+}
 
 //MC Starshey
 
@@ -27,7 +39,6 @@ var MCStarshyFamousNames = [
     'B. Borisov',
     'Slavi The Clashers',
     'Karl Marks',
-    'Donald T.',
     'Putin',
 ]
 
@@ -45,21 +56,29 @@ var MCStarshyGameNames = [
 
 function newCharacterStarshey() {
 
-    if (GetSelectedTpeValue() == "famous-people") {
+    play(); //<- set it before code execution
 
-        var randomNumber = Math.floor(Math.random() * MCStarshyFamousNames.length);
-        document.getElementById('characterDisplayStarshey').innerHTML = MCStarshyFamousNames[randomNumber];
-    }
-    else if (GetSelectedTpeValue() == "game-heroes") {
 
-        var randomNumber = Math.floor(Math.random() * MCStarshyGameNames.length);
-        document.getElementById('characterDisplayStarshey').innerHTML = MCStarshyGameNames[randomNumber];
-    }
-    else if (GetSelectedTpeValue() == "movie-characters") {
+    sleep(milliseconds).then(() => {
+        //do stuff
 
-        var randomNumber = Math.floor(Math.random() * MCStarshyMovieNames.length);
-        document.getElementById('characterDisplayStarshey').innerHTML = MCStarshyMovieNames[randomNumber];
-    }
+        if (GetSelectedTpeValue() == "famous-people") {
+
+            var randomNumber = Math.floor(Math.random() * MCStarshyFamousNames.length);
+            document.getElementById('characterDisplayStarshey').innerHTML = MCStarshyFamousNames[randomNumber];
+        }
+        else if (GetSelectedTpeValue() == "game-heroes") {
+
+            var randomNumber = Math.floor(Math.random() * MCStarshyGameNames.length);
+            document.getElementById('characterDisplayStarshey').innerHTML = MCStarshyGameNames[randomNumber];
+        }
+        else if (GetSelectedTpeValue() == "movie-characters") {
+
+            var randomNumber = Math.floor(Math.random() * MCStarshyMovieNames.length);
+            document.getElementById('characterDisplayStarshey').innerHTML = MCStarshyMovieNames[randomNumber];
+        }
+    })
+
 }
 
 
@@ -111,21 +130,29 @@ var TrendyGameNames = [
 
 function newCharacterTrendy() {
 
-    if (GetSelectedTpeValue() == "famous-people") {
+    play(); //<- set it before code execution
 
-        var randomNumber = Math.floor(Math.random() * TrendyFamousNames.length);
-        document.getElementById('characterDisplayTrendy').innerHTML = TrendyFamousNames[randomNumber];
-    }
-    else if (GetSelectedTpeValue() == "game-heroes") {
 
-        var randomNumber = Math.floor(Math.random() * TrendyGameNames.length);
-        document.getElementById('characterDisplayTrendy').innerHTML = TrendyGameNames[randomNumber];
-    }
-    else if (GetSelectedTpeValue() == "movie-characters") {
+    sleep(milliseconds).then(() => {
+        //do stuff
 
-        var randomNumber = Math.floor(Math.random() * TrendyMovieNames.length);
-        document.getElementById('characterDisplayTrendy').innerHTML = TrendyMovieNames[randomNumber];
-    }
+        if (GetSelectedTpeValue() == "famous-people") {
+
+            var randomNumber = Math.floor(Math.random() * TrendyFamousNames.length);
+            document.getElementById('characterDisplayTrendy').innerHTML = TrendyFamousNames[randomNumber];
+        }
+        else if (GetSelectedTpeValue() == "game-heroes") {
+
+            var randomNumber = Math.floor(Math.random() * TrendyGameNames.length);
+            document.getElementById('characterDisplayTrendy').innerHTML = TrendyGameNames[randomNumber];
+        }
+        else if (GetSelectedTpeValue() == "movie-characters") {
+
+            var randomNumber = Math.floor(Math.random() * TrendyMovieNames.length);
+            document.getElementById('characterDisplayTrendy').innerHTML = TrendyMovieNames[randomNumber];
+        }
+    })
+
 }
 
 
@@ -160,21 +187,28 @@ var GuttmanGameNames = [
 
 function newCharacterGuttman() {
 
-    if (GetSelectedTpeValue() == "famous-people") {
+    play(); //<- set it before code execution
 
-        var randomNumber = Math.floor(Math.random() * GuttmanFamousNames.length);
-        document.getElementById('characterDisplayGuttman').innerHTML = GuttmanFamousNames[randomNumber];
-    }
-    else if (GetSelectedTpeValue() == "game-heroes") {
 
-        var randomNumber = Math.floor(Math.random() * GuttmanGameNames.length);
-        document.getElementById('characterDisplayGuttman').innerHTML = GuttmanGameNames[randomNumber];
-    }
-    else if (GetSelectedTpeValue() == "movie-characters") {
+    sleep(milliseconds).then(() => {
+        //do stuff
 
-        var randomNumber = Math.floor(Math.random() * GuttmanMovieNames.length);
-        document.getElementById('characterDisplayGuttman').innerHTML = GuttmanMovieNames[randomNumber];
-    }
+        if (GetSelectedTpeValue() == "famous-people") {
+
+            var randomNumber = Math.floor(Math.random() * GuttmanFamousNames.length);
+            document.getElementById('characterDisplayGuttman').innerHTML = GuttmanFamousNames[randomNumber];
+        }
+        else if (GetSelectedTpeValue() == "game-heroes") {
+
+            var randomNumber = Math.floor(Math.random() * GuttmanGameNames.length);
+            document.getElementById('characterDisplayGuttman').innerHTML = GuttmanGameNames[randomNumber];
+        }
+        else if (GetSelectedTpeValue() == "movie-characters") {
+
+            var randomNumber = Math.floor(Math.random() * GuttmanMovieNames.length);
+            document.getElementById('characterDisplayGuttman').innerHTML = GuttmanMovieNames[randomNumber];
+        }
+    })
 }
 
 
