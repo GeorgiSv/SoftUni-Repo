@@ -27,30 +27,41 @@ const sleep = (milliseconds) => {
 //MC Starshey
 
 var MCStarshyMovieNames = [
-    'DeadPool',
-    'Harry Potter',
-    'Dumbledore',
-    'Lucifer',
-    'Michael Scofield ',
-    'Capitan America',
-    'John Snow'
+    "Deadpool",
+    "Dumbledore",
+    "Lucifer",
+    "Harry Potter",
+    "John Snow",
+    "Naruto",
+    "Avatar",
+    "Raphael(TMNT)",
+    "Sherlock",
+    "Jason GX",
 ]
 var MCStarshyFamousNames = [
-    'B. Borisov',
-    'Slavi The Clashers',
-    'Karl Marks',
-    'Putin',
+    "B. Borisov",
+    "Slavi The Clashers",
+    "Karl Marks",
+    "V.Putin",
+    "Rowan Atkinson",
+    "Robert Downey Jr",
+    "Jason Momoa",
+    "Charlie sheen",
+    "Bob Marley",
+    "Mike Tyson",
 ]
 
 var MCStarshyGameNames = [
-    'Pikachu',
-    'Spider-man',
-    'El Primo',
-    'Kenshi',
-    'Goro',
-    'Broke',
-    'Trevor',
-    'Hog RIder',
+    "Goro",
+    "Kenshi",
+    "Trevor",
+    "Pikachu",
+    "Super Mario",
+    "Sonic",
+    "Spider - man",
+    "Hog Rider",
+    "El Primo",
+    "Colt",
 ]
 
 
@@ -109,7 +120,7 @@ var TrendyFamousNames = [
     "Barrack Obama",
     "Ts.Tsvetanov",
     "Hr.Stoichkov",
-    "Hr.Botev",
+    "Sylvester Stallone",
 ]
 
 
@@ -119,12 +130,12 @@ var TrendyGameNames = [
     "Talion/Celebrimbor",
     "Scorpion",
     "Batman",
-    "Quan Chi",
+    "Bull",
     "Noob Saibot",
-    "Tremor",
+    "Marick",
     "Shinnok",
     "Ben Ten",
-    "Kung Jin",
+    "Mega PEKKA",
     "Ermac",
 ]
 
@@ -160,19 +171,29 @@ function newCharacterTrendy() {
 
 var GuttmanMovieNames = [
 
-    'Iron Man',
-    'Gandalf',
-    'Optimus Prime',
-    'Green Lanthern',
-    'Thorin',
+    "Iron Man",
+    "Gandalf",
+    "Optimus Prime",
+    "Green Lanthern",
+    "Thorin",
+    "Dundee Crocodile",
+    "Obi - Wan",
+    "Yoda",
+    "Ragnar Lothbrok",
+    "The Hound",
 ]
 var GuttmanFamousNames = [
 
-    "David Has",
-    "Benedict ",
-    "Richard  ",
-    "Leonardo ",
-    "Johnny D.",
+    "David Hasselhoff",
+    "Benedict Cumberbatch",
+    "Richard Armitage",
+    "Leonardo Dicaprio",
+    "Johnny Depp",
+    "Steven Seagal",
+    "Jet Li",
+    "Kevin Sorbo",
+    "Rayn Reynolds",
+    "Dolph Lundgren",
 ]
 
 var GuttmanGameNames = [
@@ -182,7 +203,11 @@ var GuttmanGameNames = [
     "Dovahkiin",
     "Sole survivor",
     "DoomGuy",
-
+    "Sub - Zero",
+    "Fujin",
+    "Death Rider",
+    "Nathan Drake",
+    "Strong",
 ]
 
 function newCharacterGuttman() {
