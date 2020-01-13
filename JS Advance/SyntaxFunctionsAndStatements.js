@@ -1,5 +1,4 @@
-//Exc 3
-
+//Exc 1  -----------------------------------------------------------------------------------------------
 // function solveFuit(type, weigthOfGrams, price){
     
 //     let kilograms = weigthOfGrams / 1000;
@@ -10,15 +9,41 @@
 
 // solveFuit('orange', 2500, 1.80);
 
-//Exc 2 
+//Exc 2 -----------------------------------------------------------------------------------------------
+// function solveGCD(firstNumber, secondNumber){
+//     while(secondNumber){
+//        let temp = secondNumber;
+//        secondNumber = firstNumber % secondNumber;
+//        firstNumber = temp; 
+//     }
+//     return firstNumber;
+// }
 
-function solveGCD(firstNumber, secondNumber){
-    while(secondNumber){
-       let temp = secondNumber;
-       secondNumber = firstNumber % secondNumber;
-       firstNumber = temp; 
+// console.log(solveGCD(15,5));
+
+
+//Exc 3 -----------------------------------------------------------------------------------------------
+function solveSameNumbers(givenNumber){
+    let numbers = String(givenNumber).split("");
+    let firstDigit = numbers[0];
+    
+    let isSameNumber = true;
+    
+    for (let index = 0; index < numbers.length; index++) {
+        const element = numbers[index];
+
+        if (element != firstDigit) {
+            isSameNumber = false;
+        }
     }
-    return firstNumber;
-}
 
-console.log(solveGCD(15,5));
+    let sum = numbers
+    .map(Number)
+    .reduce((acc, cur) => acc + cur);
+
+    console.log(isSameNumber);
+    console.log(sum);
+}
+solveSameNumbers(222);
+
+//Exc 4 
