@@ -1,9 +1,24 @@
-function solveFuit(type, weigthOfGrams, price){
-    
-    let kilograms = weigthOfGrams / 1000;
-    let finalPrice = kilograms * price;
+//Exc 3
 
-    console.log(`I need $${finalPrice.toFixed(2)} to buy ${kilograms.toFixed(2)} kilograms ${type}.`);
+// function solveFuit(type, weigthOfGrams, price){
+    
+//     let kilograms = weigthOfGrams / 1000;
+//     let finalPrice = kilograms * price;
+
+//     console.log(`I need $${finalPrice.toFixed(2)} to buy ${kilograms.toFixed(2)} kilograms ${type}.`);
+// }
+
+// solveFuit('orange', 2500, 1.80);
+
+//Exc 2 
+
+function solveGCD(firstNumber, secondNumber){
+    while(secondNumber){
+       let temp = secondNumber;
+       secondNumber = firstNumber % secondNumber;
+       firstNumber = temp; 
+    }
+    return firstNumber;
 }
 
-solveFuit('orange', 2500, 1.80);
+console.log(solveGCD(15,5));
