@@ -61,10 +61,27 @@ function solveRotateArray(array){
     console.log(array.join(' '));
 }
 
-let test = ['Banana', 
-'Orange', 
-'Coconut', 
-'Apple', 
-'15']
-;
-solveRotateArray(test);
+// let test = ['Banana', 'Orange', 'Coconut', 'Apple', '15'];
+// solveRotateArray(test);
+
+function solveExtractIncrNumber(array){
+
+    array = array.map(Number);
+    let result = [];
+    let biggestElement = 0;
+
+    for (let index = 0; index < array.length; index++) {
+
+        const element = array[index];
+        
+        if (element >= biggestElement) {
+
+            result.push(element);
+            biggestElement = element;
+        }
+    }
+    console.log(result.join('\n'));
+}
+
+let test = [1,2,3,4];    
+solveExtractIncrNumber(test);
