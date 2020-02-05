@@ -12,11 +12,14 @@
 //     console.log(JSON.stringify(heroes));
 // }
 
-// let test = ['Isacc / 25 / Apple, GravityGun',
+// let testHeroicInvetory = ['Isacc / 25 / Apple, GravityGun',
 // 'Derek / 12 / BarrelVest, DestructionSword',
 // 'Hes / 1 / Desolator, Sentinel, Antara'];
 
-// solveHeroicInvetory(test);
+// solveHeroicInvetory(testHeroicInvetory);
+
+
+// //--
 
 // function solveJSONTable(input){
 
@@ -32,49 +35,100 @@
         
 // }
 
-// let test = ['{"name":"Pesho","position":"Promenliva","salary":100000}',
+// let testJSONTable = ['{"name":"Pesho","position":"Promenliva","salary":100000}',
 // '{"name":"Teo","position":"Lecturer","salary":1000}',
 // '{"name":"Georgi","position":"Lecturer","salary":1000}'];
-// solveJSONTable(test);
+// solveJSONTable(testJSONTable);
 
-function solveCappyJuice(array){
+// //---
 
-    let juices = {};
-    let bottles = {};
+// function solveCappyJuice(array){
+
+//     let juices = {};
+//     let bottles = {};
+
+//     for (let index = 0; index < array.length; index++) {
+
+//         let [name, quantity] = array[index].split(" => ");
+//         quantity = Number(quantity);
+
+//         if(name in juices){
+//             juices[name] += quantity;
+//         }
+//         else{
+//             juices[name] = quantity;
+//         }
+
+//         if (juices[name] >= 1000) {
+//             if(name in bottles){
+//                 bottles[name] += quantity;
+//             }
+//             else{
+//                 bottles[name] = quantity;
+//             }
+            
+//         }
+//     }
+
+//     for (let key in bottles) {
+//         console.log(`${key} => ${Math.floor(Number(juices[key]/1000))}`);
+//     }
+// }
+
+// let testCappyJuice = ['Orange => 2000',
+// 'Peach => 1432',
+// 'Banana => 450',
+// 'Peach => 600',
+// 'Strawberry => 549'];
+
+// solveCappyJuice(testCappyJuice);
+
+//---
+
+function solveStoreCataloge(array){
+    
+    let cataloge = {};
+
+    array = array.sort();
 
     for (let index = 0; index < array.length; index++) {
 
-        let [name, quantity] = array[index].split(" => ");
-        quantity = Number(quantity);
+        let [name, price] = array[index].split(" : ");
+        let initial = name[0];
+        price = Number(price);
 
-        if(name in juices){
-            juices[name] += quantity;
-        }
-        else{
-            juices[name] = quantity;
+        if(!cataloge.hasOwnProperty(initial)){
+            cataloge[initial] = {};
         }
 
-        if (juices[name] >= 1000) {
-            if(name in bottles){
-                bottles[name] += quantity;
-            }
-            else{
-                bottles[name] = quantity;
-            }
-            
+        let products = cataloge[initial];
+
+        if(!products.hasOwnProperty(name)){
+            products[name] = price;
         }
     }
 
-    for (let key in bottles) {
-        console.log(`${key} => ${Math.floor(Number(juices[key]/1000))}`);
+    let result = Object.keys(cataloge).sort();
+
+    for (let initial of result) {
+        console.log(initial);
+
+      let products = cataloge[initial];
+      let sorted = Object.keys(products);
+
+      for (const iterator of sorted) {
+          console.log(`  ${iterator}: ${products[iterator]}`);
+      }
+        
     }
 }
 
-let test = ['Orange => 2000',
-'Peach => 1432',
-'Banana => 450',
-'Peach => 600',
-'Strawberry => 549'];
-
-solveCappyJuice(test);
-
+solveStoreCataloge(['Appricot : 20.4',
+'Fridge : 1500',
+'TV : 1499',
+'Deodorant : 10',
+'Boiler : 300',
+'Apple : 1.25',
+'Anti-Bug Spray : 15',
+'T-Shirt : 10']
+);
