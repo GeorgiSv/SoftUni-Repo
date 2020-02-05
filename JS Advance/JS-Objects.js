@@ -36,3 +36,45 @@
 // '{"name":"Teo","position":"Lecturer","salary":1000}',
 // '{"name":"Georgi","position":"Lecturer","salary":1000}'];
 // solveJSONTable(test);
+
+function solveCappyJuice(array){
+
+    let juices = {};
+    let bottles = {};
+
+    for (let index = 0; index < array.length; index++) {
+
+        let [name, quantity] = array[index].split(" => ");
+        quantity = Number(quantity);
+
+        if(name in juices){
+            juices[name] += quantity;
+        }
+        else{
+            juices[name] = quantity;
+        }
+
+        if (juices[name] >= 1000) {
+            if(name in bottles){
+                bottles[name] += quantity;
+            }
+            else{
+                bottles[name] = quantity;
+            }
+            
+        }
+    }
+
+    for (let key in bottles) {
+        console.log(`${key} => ${Math.floor(Number(juices[key]/1000))}`);
+    }
+}
+
+let test = ['Orange => 2000',
+'Peach => 1432',
+'Banana => 450',
+'Peach => 600',
+'Strawberry => 549'];
+
+solveCappyJuice(test);
+
