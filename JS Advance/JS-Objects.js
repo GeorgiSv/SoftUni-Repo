@@ -87,6 +87,7 @@
 
 function solveStoreCataloge(array){
     
+    
     let cataloge = {};
 
     array = array.sort();
