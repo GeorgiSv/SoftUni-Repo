@@ -5,7 +5,7 @@ function solve() {
 
      let button = document.getElementsByTagName("button")[0];
      let result = document.getElementById("result");
-     let input = document.getElementById("input").value;
+     let input = document.getElementById("input");
 
      button.addEventListener("click", convert);
    
@@ -15,18 +15,14 @@ function solve() {
         let number = Number(input);
         let currentOption = optionMenu.value;
         let currentResult;
+        
+        if(currentOption === "binary"){
 
-        if (number < 0) {
-            number = 0xFFFFFFFF + n + 1;
-           } 
-
-        if(currentOption == "binary"){
-
-            currentResult = parseInt(number, 10).toString(2);
+            currentResult = (Number(input.value)).toString(2);
         }
-        else if(currentOption == "hexadeicmal"){
+        else if(currentOption === "hexadeicmal"){
 
-            currentResult = parseInt(number, 10).toString(16);
+            currentResult = (Number(input.value)).toString(16).toUpperCase();
         }
         result.value = currentResult;
      }
