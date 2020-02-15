@@ -1,10 +1,6 @@
 const lookupChar = require("../solveCharLookup.js");
 let assert = require("chai").assert;
 
-//A
-//A
-//A
-
 describe("Look up function tests", function(){
     it("Check if return undentified - not string", function(){
         let example = lookupChar(34, 1);

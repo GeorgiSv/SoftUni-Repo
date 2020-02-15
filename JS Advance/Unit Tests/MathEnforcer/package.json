@@ -1,0 +1,15 @@
+{
+  "name": "mathenforcer",
+  "version": "1.0.0",
+  "description": "Exc 4",
+  "main": "solveMathEnforcer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Georgisv",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^7.0.1"
+  }
+}
