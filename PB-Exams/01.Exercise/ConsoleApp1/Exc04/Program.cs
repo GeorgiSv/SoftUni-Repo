@@ -16,10 +16,13 @@ namespace Exc04
                 {
                     if (m == s)
                     {
+                        //Finish the programm
                         return;
                     }
+                    //Prin the result in one line
                     Console.Write(m + " ");
                 }
+                //Decrease M
                 m--;
             }
         }

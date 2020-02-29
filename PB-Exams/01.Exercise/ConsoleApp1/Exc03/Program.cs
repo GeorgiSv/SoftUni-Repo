@@ -10,11 +10,15 @@ namespace Exc03
             string dates = Console.ReadLine();
             int nightsCount = int.Parse(Console.ReadLine());
 
+            //Make varaiable to store the needed money
             var neededMoney = 0;
 
             switch (counttry)
             {
+                //Checking th country
+
                 case "France":
+                    //Checking the dates
                     if (dates == "21-23")
                     {
                         neededMoney = nightsCount * 30;
@@ -57,7 +61,7 @@ namespace Exc03
                     }
                     break;
             }
-
+            //Print
             Console.WriteLine($"Easter trip to {counttry} : {neededMoney:f2} leva.");
         }
     }
