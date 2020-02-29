@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1
+﻿namespace Exc01
 {
     using System;
     public class Program
