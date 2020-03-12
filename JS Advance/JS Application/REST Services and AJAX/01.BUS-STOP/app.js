@@ -3,8 +3,8 @@ function getInfo() {
    // let button = document.getElementById('submit');
     let input = document.getElementById('stopId');
     let bussesContainer = document.getElementById('buses');
-    let stopName = document.getElementById("stopName")
-;
+    let stopName = document.getElementById("stopName");
+    
     let stopID = input.value;
     let url = `https://judgetests.firebaseio.com/businfo/${stopID}.json`;
 
