@@ -9,8 +9,6 @@ function solve() {
     let currnetName = "";
 
     function depart() {
-        
-        
         fetch(url)
         .then((res) => res.json())
         .then((data) =>{

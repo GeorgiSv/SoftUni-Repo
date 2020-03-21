@@ -1,41 +1,80 @@
 function attachEvents() {
     let ul = document.getElementById("phonebook");
-    let loadButton = document.getElementById("btnLoad");
-    let createBitton = document.getElementById("btnCreate");
-    let inputs  = document.getElementsByTagName("input");
 
-    //let urlDelete = `https://phonebook-nakov.firebaseio.com/phonebook/${}.json`;
-    let url = 'https://phonebook-nakov.firebaseio.com/phonebook.json';
-    fetch(url)
-    .then((response) => response.json())
-    .then(data =>{
-        loadButton.addEventListener("click", function(){
-            ul.innerHTML = "";
-            for (let key in data) {
-                newLi.textContent = `${key.person}:${key.phone}`;
-                 
-            }
-            
-        });
+    let personInput  = document.getElementById("person");
+    let phoneInput = document.getElementById("phone");
 
-        createBitton.addEventListener("click", function(){
-            
-            let newLi = document.createElement("li");
-            newLi.textContent = `${inputs[0].value}:${inputs[1].value}`;
-            let newDeleteBtn = document.createElement("button");
-            newDeleteBtn.textContent = "Delete";
-            newLi.appendChild(newDeleteBtn);
 
-            ul.appendChild(newLi);
+    function loadElemenets (){
+        fetch('https://phonebook-nakov.firebaseio.com/phonebook.json')
+        .then((res) => res.json())
+        .then((data) =>{
+            Object.entries(data)
+            .forEach(([elementID, phonebookData]) =>{
+                const {person, phone} = phonebookData;
 
-            inputs[0].value = "";
-            inputs[1].value = "";
-            data.push({person: inputs[0],phone: inputs[1]})
+                let li = document.createElement("li");
+                li.textContent = `${person}: ${phone}`;
+
+                let deleteBtn = document.createElement("button");
+                deleteBtn.setAttribute("data-target", elementID);
+                deleteBtn.textContent = "Delete";
+
+                deleteBtn.addEventListener("click", deleteElement);
+
+                li.appendChild(deleteBtn);
+                ul.appendChild(li);
+            })
         })
+        .catch(handleError);
+    }
+    function deleteElement (e){
 
-    })
+        let bookID = this.getAttribute('data-target');
+        
+        const headers = {
+            method: 'DELETE',
+        }
 
+        fetch(`https://phonebook-nakov.firebaseio.com/phonebook/${bookID}.json`, headers)
+         .then(() => {
+            ul.innerHTML = "";
+            loadElemenets();
+         })
+         .catch(handleError);
+       
+    }
+    
+    function createElement(){
+        const person = personInput.value;
+        const phone = phoneInput.value;
 
+        const headers = {
+            method: 'POST',
+            headers: {'Xontent-Type': 'application/json'},
+            body: JSON.stringify({person, phone})
+        }
+
+            fetch('https://phonebook-nakov.firebaseio.com/phonebook.json', headers)
+                .then(()=>{
+                    personInput.value = "";
+                    phoneInput.value = "";
+                    ul.innerHTML = "";
+                    loadElemenets();
+                })
+                .catch(handleError);
+
+        }
+
+    function handleError(){
+        console.log("Error is here");
+        
+    }
+
+    return{
+        loadElemenets,
+        createElement
+    }
 }
 
-attachEvents();
+let result = attachEvents();
