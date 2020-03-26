@@ -57,14 +57,13 @@ function listAllBooks(){
 
         //Creat the JSON info in the database
         let body = extractInput();
-        createNewBook(body);
+        createNewBook(body)
+        .then(listAllBooks());
 
         //clean the fields
         inputs.forEach(x =>{
             x.value = '';
         })
-
-        listAllBooks();
     });
 
     loadButton.addEventListener("click", function(){
@@ -78,29 +77,30 @@ function listAllBooks(){
         let id = currentRow.getAttribute("data-id");
 
         if (e.target.innerText === "Delete") {
-
-            deleteBook(id);
-            listAllBooks();
+            deleteBook(id)
+            .then(listAllBooks());
         }
         else if(e.target.innerText === "Edit"){
 
-            // getBook(id).then((data) =>{
-            //    let {author, isbn, title} = data;
-            //    booksToFrom(author, isbn, title);
-            // })
+                let newInputs = extractInput();
+                updateBook(newInputs, id)
+                .then(listAllBooks());
 
-            // submitButton.addEventListener("click", function(e){
-            //     let newInputs = extractInput();
-            //     updateBook(newInputs, id);
-            // });
+                inputs.forEach(x =>{
+                    x.value = '';
+                })
         }
         else{
-            return;
+           let currentBook = e.target.parentNode;
+           let currentBookId = currentBook.getAttribute("data-id");
+
+            getBook(currentBookId).then((data) =>{
+                let {author, isbn, title} = data;
+                booksToFrom(author, isbn, title);
+             })
         }
         
     });
-
-
 }());
 
 
