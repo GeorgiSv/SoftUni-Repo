@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DonUni</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+
+<body>
+
+    <div id="main"></div>
+
+    <!-- Node Modules -->
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+    <script src="./node_modules/handlebars/dist/handlebars.js"></script>
+    <script src="./node_modules/sammy/lib/sammy.js"></script>
+    <script src="./node_modules/sammy/lib/plugins/sammy.handlebars.js"></script>
+    <script src="./node_modules/popper.js/dist/umd/popper.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- ./Node Modules -->
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCN8qWWtXttc_vK3Ng5_j91llTDzFfetrw",
+    authDomain: "gsg-base-softuni.firebaseapp.com",
+    databaseURL: "https://gsg-base-softuni.firebaseio.com",
+    projectId: "gsg-base-softuni",
+    storageBucket: "gsg-base-softuni.appspot.com",
+    messagingSenderId: "893642014916",
+    appId: "1:893642014916:web:3289fe83ade9b282604991",
+    measurementId: "G-T4P9LKDP8Y"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+<script defer src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+    <!-- Helpers -->
+    <!-- ./Helpers -->
+
+    <!-- Controllers -->
+    <!-- ./Controllers -->
+
+    <!-- Models -->
+    <!-- ./Models -->
+
+    <!-- APP -->
+    <script type="module" src="./scripts/app.js"></script>
+    <!-- ./APP -->
+
+</body>
+
+</html>
