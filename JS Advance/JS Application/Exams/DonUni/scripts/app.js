@@ -27,5 +27,5 @@ import controlers from './controlers/index.js';
 
 
 (()=>{
-    app.run('#/home');
+    app.run();
 })();
