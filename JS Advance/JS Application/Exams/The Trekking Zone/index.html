@@ -1,0 +1,50 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>The Trekking Zone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="./styles/styles.css" />
+</head>
+
+<body>
+<div id="main"></div>
+</body>
+
+<!-- Libraries -->
+<script src="./node_modules/jquery/dist/jquery.js"></script>
+<script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="./node_modules/handlebars/dist/handlebars.js"></script>
+<script src="./node_modules/sammy/lib/sammy.js"></script>
+<script src="./node_modules/sammy/lib/plugins/sammy.handlebars.js"></script> 
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCTOVhBs8wkOxB0_mlXPwBZWBBosyR2Ftw",
+    authDomain: "softuni-base.firebaseapp.com",
+    databaseURL: "https://softuni-base.firebaseio.com",
+    projectId: "softuni-base",
+    storageBucket: "softuni-base.appspot.com",
+    messagingSenderId: "1088805868245",
+    appId: "1:1088805868245:web:40f5296b2067ec04eb485c",
+    measurementId: "G-PR7CNMZZE8"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+
+<script defer src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
+<script defer src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+<script type="module" src="./scripts/app.js"></script>
+
+
+</html>
