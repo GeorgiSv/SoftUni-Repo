@@ -15,7 +15,8 @@ namespace SoftUni
             //Console.WriteLine(GetEmployeesFullInformation(db));
             //Console.WriteLine(GetEmployeesWithSalaryOver50000(db));
             //Console.WriteLine(GetEmployeesFromResearchAndDevelopment(db));
-            Console.WriteLine(AddNewAddressToEmployee(db));
+            //Console.WriteLine(AddNewAddressToEmployee(db));
+            Console.WriteLine(GetEmployeesInPeriod(db));
 
         }
 
@@ -130,6 +131,43 @@ namespace SoftUni
             return sb.ToString().TrimEnd();
         }
 
-        
+        public static string GetEmployeesInPeriod(SoftUniContext context)
+        {
+            var sb = new StringBuilder();
+            //(ep => ep.Project.StartDate.Year >= 2001 && ep.Project.StartDate.Year <= 2003))
+            var employees = context.Employees
+                .Where(e => e.EmployeesProjects.Any(ep => ep.Project.StartDate.Year >= 2001  && ep.Project.StartDate.Year <= 2003))
+                .Select(e => new
+                {
+                    e.FirstName,
+                    e.LastName,
+                    ManagerFirstName = e.Manager.FirstName,
+                    ManagerLastName = e.Manager.LastName,
+                    Projects = e.EmployeesProjects.Select(ep => new 
+                    { 
+                        ep.Project.Name,
+                        ep.Project.StartDate,
+                        ep.Project.EndDate
+                    })
+                })
+                .Take(10)
+                .ToList();
+
+            foreach (var employ in employees)
+            {
+                sb.AppendLine($"{employ.FirstName} {employ.LastName} - Manager: {employ.ManagerFirstName} {employ.ManagerLastName}");
+
+                foreach (var project  in employ.Projects)
+                {
+
+                    var startDate = project.StartDate.ToString("M/d/yyyy h:mm:ss tt");
+                    var endDate = project.EndDate.HasValue ? project.EndDate.Value.ToString("M/d/yyyy h:mm:ss tt") : "not finished";
+                    sb.AppendLine($"-- {project.Name} - {startDate} - {endDate}");
+                }
+            }
+            return sb.ToString().TrimEnd();
+        }
+
+
     }
 }
