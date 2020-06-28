@@ -14,10 +14,12 @@ namespace SoftUni
 
             //Console.WriteLine(GetEmployeesFullInformation(db));
             //Console.WriteLine(GetEmployeesWithSalaryOver50000(db));
-            Console.WriteLine(GetEmployeesFromResearchAndDevelopment(db));
+            //Console.WriteLine(GetEmployeesFromResearchAndDevelopment(db));
+            Console.WriteLine(AddNewAddressToEmployee(db));
+
         }
 
-        //Problem 1
+        //Problem 3
         public static string GetEmployeesFullInformation(SoftUniContext context)
         {
             StringBuilder sb = new StringBuilder();
@@ -40,7 +42,7 @@ namespace SoftUni
             return sb.ToString();
         }
 
-        //Problem 2
+        //Problem 4
         public static string GetEmployeesWithSalaryOver50000(SoftUniContext context)
         {
             StringBuilder sb = new StringBuilder();
@@ -63,7 +65,7 @@ namespace SoftUni
             return sb.ToString().TrimEnd();
         }
 
-        //Problem 3 
+        //Problem 5 
         public static string GetEmployeesFromResearchAndDevelopment(SoftUniContext context)
         {
             var sb = new StringBuilder();
@@ -90,5 +92,44 @@ namespace SoftUni
 
             return sb.ToString().TrimEnd();
         }
+
+        //Problem 6 
+        public static string AddNewAddressToEmployee(SoftUniContext context)
+        {
+            var sb = new StringBuilder();
+
+            Address address = new Address()
+            {
+                AddressText = "Vitoshka 15",
+                TownId = 4
+            };
+
+            context.Addresses.Add(address);
+
+            var nakov = context.Employees.
+                First(e => e.LastName == "Nakov");
+
+            nakov.Address = address;
+
+            context.SaveChanges();
+
+            var addressessText = context.Employees
+                .OrderByDescending(e => e.AddressId)
+                .Select(e => new
+                {
+                    e.Address.AddressText
+                })
+                .Take(10)
+                .ToList();
+
+            foreach (var addressText in addressessText)
+            {
+                sb.AppendLine(addressText.AddressText);
+            }
+
+            return sb.ToString().TrimEnd();
+        }
+
+        
     }
 }
