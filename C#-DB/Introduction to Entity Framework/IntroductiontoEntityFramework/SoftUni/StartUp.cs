@@ -18,7 +18,8 @@ namespace SoftUni
             //Console.WriteLine(AddNewAddressToEmployee(db));
             //Console.WriteLine(GetEmployeesInPeriod(db));
             //Console.WriteLine(GetAddressesByTown(db));
-            Console.WriteLine(GetEmployee147(db));
+            //Console.WriteLine(GetEmployee147(db));
+            Console.WriteLine(GetDepartmentsWithMoreThan5Employees(db));
         }
 
         //Problem 3
@@ -226,7 +227,39 @@ namespace SoftUni
         //Problem10
         public static string GetDepartmentsWithMoreThan5Employees(SoftUniContext context)
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+
+            var departments = context.Departments
+                .Where(d => d.Employees.Count > 5)
+                .OrderBy(d => d.Employees.Count)
+                .ThenBy(d => d.Name)
+                .Select(d => new
+                {
+                    d.Name,
+                    ManagerName = d.Manager.FirstName + " " + d.Manager.LastName,
+                    Employees = d.Employees
+                    .OrderBy(e => e.FirstName)
+                    .ThenBy(e => e.LastName)
+                    .Select(e => new
+                    {
+                        e.FirstName,
+                        e.LastName,
+                        e.JobTitle
+                    })
+                })
+                .ToList();
+
+            foreach (var department in departments)
+            {
+                sb.AppendLine($"{department.Name} - {department.ManagerName}");
+
+                foreach (var employee in department.Employees)
+                {
+                    sb.AppendLine($"{employee.FirstName} {employee.LastName} - {employee.JobTitle}");
+                }
+            }
+
+            return sb.ToString().TrimEnd();
         }
     }
 }
