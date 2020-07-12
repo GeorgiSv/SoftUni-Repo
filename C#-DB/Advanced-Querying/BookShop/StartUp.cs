@@ -1,8 +1,10 @@
 ﻿namespace BookShop
 {
+    using BookShop.Models;
     using Data;
     using Initializer;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Text;
 
@@ -13,21 +15,20 @@
             using var db = new BookShopContext();
             //DbInitializer.ResetDatabase(db);
 
-            //string input = Console.ReadLine();
+            string input = Console.ReadLine();
 
-            var result = GetGoldenBooks(db);
+            var result = GetBooksByCategory(db, input);
 
             Console.WriteLine(result);
         }
 
-
+        //#1
         public static string GetBooksByAgeRestriction(BookShopContext context, string command)
         {
             var sb = new StringBuilder();
 
             var books = context
                 .Books
-                .AsEnumerable()
                 .Where(b => b.AgeRestriction.ToString().ToLower() == command.ToLower())
                 .Select(b =>b.Title)
                 .OrderBy(bt=> bt)
@@ -40,7 +41,7 @@
 
             return sb.ToString().TrimEnd();
         }
-
+        //#2
         public static string GetGoldenBooks(BookShopContext context)
         {
             var sb = new StringBuilder();
@@ -56,6 +57,69 @@
             sb.AppendLine(string.Join(Environment.NewLine, bookTitles));
 
            return sb.ToString().TrimEnd();
+        }
+
+        //#3
+        public static string GetBooksByPrice(BookShopContext context)
+        {
+            var sb = new StringBuilder();
+
+            var books = context
+                 .Books
+                 .AsEnumerable()
+                 .Where(b => b.Price > 40)
+                 .OrderByDescending(b => b.Price)
+                 .Select(b => new { b.Title, b.Price })
+                 .ToList();
+
+            foreach (var book in books)
+            {
+                sb.AppendLine(string.Join(Environment.NewLine, $"{book.Title} - ${book.Price}"));
+            }
+
+            return sb.ToString().TrimEnd();
+        }
+
+        //#4
+        public static string GetBooksNotReleasedIn(BookShopContext context, int year)
+        {
+            var sb = new StringBuilder();
+
+            var bookTitles = context
+                .Books
+                .Where(b => b.ReleaseDate.Value.Year != year)
+                .OrderBy(b => b.BookId)
+                .Select(b => b.Title)
+                .ToList();
+
+            sb.AppendLine(string.Join(Environment.NewLine, bookTitles));
+
+            return sb.ToString().TrimEnd();
+        }
+
+        public static string GetBooksByCategory(BookShopContext context, string input)
+        {
+            var sb = new StringBuilder();
+
+            string[] categories = input.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+
+            var allBooksPerCategory = new List<string>();
+
+            for (int i = 0; i < categories.Length ; i++)
+            {
+                allBooksPerCategory.AddRange(context
+                   .BooksCategories
+                   .Where(b => b.Category.Name.ToLower() == categories[i].ToLower())
+                   .Select(bc => bc.Book.Title)
+                   .ToList());
+            }
+
+            foreach (var bookTitle in allBooksPerCategory.OrderBy(b => b))
+            {
+                sb.AppendLine(bookTitle);
+            }
+
+            return sb.ToString().TrimEnd();
         }
     }
 }
