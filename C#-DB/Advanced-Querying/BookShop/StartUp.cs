@@ -17,7 +17,7 @@
 
             string input = Console.ReadLine();
 
-            var result = GetBooksByCategory(db, input);
+            var result = GetBooksReleasedBefore(db, input);
 
             Console.WriteLine(result);
         }
@@ -30,8 +30,8 @@
             var books = context
                 .Books
                 .Where(b => b.AgeRestriction.ToString().ToLower() == command.ToLower())
-                .Select(b =>b.Title)
-                .OrderBy(bt=> bt)
+                .Select(b => b.Title)
+                .OrderBy(bt => bt)
                 .ToList();
 
 
@@ -56,7 +56,7 @@
 
             sb.AppendLine(string.Join(Environment.NewLine, bookTitles));
 
-           return sb.ToString().TrimEnd();
+            return sb.ToString().TrimEnd();
         }
 
         //#3
@@ -105,7 +105,7 @@
 
             var allBooksPerCategory = new List<string>();
 
-            for (int i = 0; i < categories.Length ; i++)
+            for (int i = 0; i < categories.Length; i++)
             {
                 allBooksPerCategory.AddRange(context
                    .BooksCategories
@@ -121,5 +121,37 @@
 
             return sb.ToString().TrimEnd();
         }
+
+        public static string GetBooksReleasedBefore(BookShopContext context, string date)
+        {
+            var sb = new StringBuilder();
+
+            var dateNumbers = date
+                .Split("-")
+                .Select(int.Parse)
+                .ToArray();
+
+            var givenDate = new DateTime(dateNumbers[2], dateNumbers[1], dateNumbers[0]);
+
+
+            var books = context
+                 .Books
+                 .Where(b => b.ReleaseDate < givenDate)
+                 .OrderByDescending(b=> b.ReleaseDate)
+                 .Select(b => new
+                 {
+                     b.Title,
+                     b.EditionType,
+                     b.Price
+                 })
+                 .ToList();
+
+            foreach (var book in books)
+            {
+                sb.AppendLine(book.Title + " - " + book.EditionType.ToString() + " - $" + book.Price);
+            }
+            return sb.ToString().TrimEnd();
+        }
+
     }
 }
