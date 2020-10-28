@@ -25,6 +25,7 @@
             //Calculate the needed sum
             double result = palamudSum + safridlSum + musselsSum;
             Console.WriteLine($"{result:F2}");
+            Console.WriteLine();
         }
     }
 }
